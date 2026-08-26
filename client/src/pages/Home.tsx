@@ -30,7 +30,7 @@ const restImage = "/manus-storage/little-monk-card-rest_eb7b6de3.png";
 const logoImage = "/manus-storage/little-monk-logo_0dbd06fa.png";
 
 const categories = [
-  { name: "全部語料", count: 96 },
+  { name: "全部語料", count: 144 },
   { name: "慈悲", count: 12 },
   { name: "感恩", count: 12 },
   { name: "包容", count: 12 },
