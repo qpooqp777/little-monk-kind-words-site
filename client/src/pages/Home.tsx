@@ -24,10 +24,11 @@ import {
   X,
 } from "lucide-react";
 
-const heroImage = "/manus-storage/little-monk-hero_8fe4e839.png";
-const kindnessImage = "/manus-storage/little-monk-card-kindness_69724cd7.png";
-const restImage = "/manus-storage/little-monk-card-rest_eb7b6de3.png";
-const logoImage = "/manus-storage/little-monk-logo_0dbd06fa.png";
+const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`;
+const heroImage = asset("little-monk-hero.webp");
+const kindnessImage = asset("little-monk-card-kindness.webp");
+const restImage = asset("little-monk-card-rest.webp");
+const logoImage = asset("little-monk-logo.webp");
 
 const categories = [
   { name: "全部語料", count: 144 },

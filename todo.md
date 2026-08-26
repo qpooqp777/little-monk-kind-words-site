@@ -23,3 +23,20 @@
 - [x] 加入成功、失敗與「全部語料需先選類別」的操作回饋。
 - [x] 驗證分類切換、搜尋狀態與整類複製不互相干擾。
 - [x] 執行 TypeScript 檢查、正式建置與桌面/手機截圖驗證。
+
+## GitHub Pages 發布
+
+- [ ] 檢查 GitHub 儲存庫與目前部署狀態。
+- [ ] 加入 GitHub Pages 專用建置與部署工作流。
+- [ ] 設定 Vite base 路徑與靜態資產引用。
+- [ ] 推送網站原始碼並啟用 GitHub Pages。
+- [ ] 驗證 Actions 執行結果與 Pages 網址。
+
+## 公開 GitHub Pages 部署
+
+- [ ] 複製主視覺與品牌圖片到可部署的靜態資產目錄。
+- [ ] 將圖片引用改為 GitHub Pages 可用的相對路徑。
+- [ ] 設定 Vite 的專案 base 路徑。
+- [ ] 建立 GitHub Pages build-and-deploy Actions 工作流。
+- [ ] 建立公開 GitHub 儲存庫並推送網站。
+- [ ] 啟用 Pages、等待部署並驗證公開網址。
