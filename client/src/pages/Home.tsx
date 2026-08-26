@@ -224,6 +224,7 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("全部語料");
   const [query, setQuery] = useState("");
   const [copiedId, setCopiedId] = useState<number | null>(null);
+  const [copiedGroup, setCopiedGroup] = useState(false);
   const [featuredId, setFeaturedId] = useState(14);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -239,6 +240,22 @@ export default function Home() {
   const featuredWord = kindWords.find((word) => word.id === featuredId) ?? kindWords[13];
 
   const formatPrompt = (word: KindWord) => `文字：「${word.phrase}」；小沙彌${word.action}；表情${word.emotion}；視角為${word.view}；手繪特效為${word.effect}。`;
+
+  const formatGroupPrompt = (category: string) => {
+    const selected = kindWords.filter((word) => word.category === category);
+    return [`# ${category}｜12 格 LINE 貼圖 Prompt`, "", "請依照以下 12 種情境，維持同一個小沙彌角色外觀、二頭身比例與貼紙風格。", "", ...selected.map((word, index) => `${index + 1}. ${formatPrompt(word)}`)].join("\n");
+  };
+
+  const copyCategory = async () => {
+    if (activeCategory === "全部語料") return;
+    try {
+      await navigator.clipboard.writeText(formatGroupPrompt(activeCategory));
+      setCopiedGroup(true);
+      window.setTimeout(() => setCopiedGroup(false), 2200);
+    } catch {
+      setCopiedGroup(false);
+    }
+  };
 
   const copyPhrase = async (word: KindWord) => {
     try {
@@ -295,7 +312,7 @@ export default function Home() {
         <main className="main-content">
           <section className="hero-section" aria-labelledby="page-title">
             <div className="hero-copy">
-              <div className="section-kicker"><span className="chapter-mark">一</span><span>小沙彌語料圖鑑 / 2026</span></div>
+              <div className="section-kicker"><span className="chapter-mark">一</span><span>小沙彌語料圖鑑 / 2026</span><img className="section-logo" src={logoImage} alt="" /></div>
               <h1 id="page-title">把一句好話，<em>放進</em><br />今天的對話裡。</h1>
               <p className="hero-lede">一份給日常使用的向善用語集。沒有說教，只有剛剛好的溫柔，讓每次回覆都多一點餘地。</p>
               <div className="hero-actions">
@@ -323,7 +340,7 @@ export default function Home() {
                 </div>
                 <button className="icon-action" type="button" onClick={chooseFeatured} aria-label="換一句今日用語" title="換一句今日用語"><RotateCw size={17} /></button>
               </div>
-              <div className="daily-card-foot"><span><Sparkles size={14} /> 小沙彌想說</span><span>把善意放在能抵達的地方。</span></div>
+              <div className="daily-card-foot"><span><img className="daily-logo" src={logoImage} alt="" /><Sparkles size={14} /> 小沙彌想說</span><span>把善意放在能抵達的地方。</span></div>
             </div>
             <div className="daily-side-note">
               <img src={kindnessImage} alt="小沙彌端著熱茶的插畫" />
@@ -338,6 +355,10 @@ export default function Home() {
                 <h2 id="library-heading">選一句，<em>好好說。</em></h2>
               </div>
               <div className="library-tools">
+                <button className={`batch-copy-button ${activeCategory === "全部語料" ? "is-disabled" : ""}`} type="button" onClick={copyCategory} disabled={activeCategory === "全部語料"} title={activeCategory === "全部語料" ? "請先選擇一個類別" : `複製${activeCategory}的 12 格 Prompt`} aria-label={activeCategory === "全部語料" ? "請先選擇一個類別，再複製整類 Prompt" : `複製${activeCategory}的 12 格 Prompt`}>
+                  <Copy size={15} />
+                  <span>{activeCategory === "全部語料" ? "先選一類" : `收下${activeCategory} 12 格`}</span>
+                </button>
                 <label className="search-box">
                   <Search size={17} />
                   <span className="sr-only">搜尋向善用語</span>
@@ -366,6 +387,7 @@ export default function Home() {
                     </div>
                   )}
                   <article className={`phrase-row accent-${word.color}`}>
+                  <span className="phrase-tab" aria-hidden="true">善</span>
                   <div className="phrase-number">{String(index + 1).padStart(2, "0")}</div>
                   <div className="phrase-main">
                     <div className="phrase-topline"><span className="phrase-category">{word.category}</span><span className="phrase-tone">{word.tone}</span></div>
@@ -376,7 +398,7 @@ export default function Home() {
                   <div className="phrase-detail action-detail"><span className="detail-label">Prompt 內容</span><p>{word.action}<br /><span className="effect-text">表情：{word.emotion}・視角：{word.view}<br />特效：{word.effect}</span></p></div>
                   <button className={`copy-button ${copiedId === word.id ? "is-copied" : ""}`} type="button" onClick={() => copyPhrase(word)} aria-label={`複製完整 Prompt：${word.phrase}`}>
                     {copiedId === word.id ? <Check size={16} /> : <Copy size={16} />}
-                    <span>{copiedId === word.id ? "已收下" : "複製 Prompt"}</span>
+                    <span>{copiedId === word.id ? "已收下" : "收下這句"}</span>
                   </button>
                   </article>
                 </Fragment>
@@ -396,7 +418,7 @@ export default function Home() {
       </div>
 
       <footer className="site-footer"><span className="footer-brand"><img src={logoImage} alt="" />小沙彌向善用語專區</span><span>以一句好話，替今天留一盞燈。</span><span>© 2026 Kind Words Archive</span></footer>
-      <div className={`copy-status ${copiedId ? "is-visible" : ""}`} aria-live="polite">{copiedId ? "完整 Prompt 已收進剪貼簿" : ""}</div>
+      <div className={`copy-status ${copiedId || copiedGroup ? "is-visible" : ""}`} aria-live="polite">{copiedGroup ? `${activeCategory} 的 12 格 Prompt 已收進剪貼簿` : copiedId ? "完整 Prompt 已收進剪貼簿" : ""}</div>
     </div>
   );
 }
