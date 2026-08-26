@@ -5,6 +5,10 @@ import {
   BookOpenText,
   Check,
   Coffee,
+  Compass,
+  Gift,
+  Handshake,
+  ShieldCheck,
   Copy,
   Flower2,
   HeartHandshake,
@@ -35,6 +39,10 @@ const categories = [
   { name: "自省", count: 12 },
   { name: "和善", count: 12 },
   { name: "善行", count: 12 },
+  { name: "尊重", count: 12 },
+  { name: "和解", count: 12 },
+  { name: "分享", count: 12 },
+  { name: "祝福", count: 12 },
 ];
 
 type KindWord = {
@@ -147,6 +155,54 @@ const kindWords: KindWord[] = [
   { id: 94, category: "善行", phrase: "留一盞燈給人", context: "想為晚歸、迷惘或正在努力的人留下一點指引。", action: "小沙彌將小燈掛在路旁。", emotion: "守望溫暖", view: "側面全身", effect: "小燈、道路線", tone: "提供方向", color: "peach" },
   { id: 95, category: "善行", phrase: "先問對方需不需要", context: "想幫忙前先尊重對方的需求與界線。", action: "小沙彌舉起手掌詢問，另一手捧著蓮花。", emotion: "尊重熱心", view: "正面半身", effect: "對話泡泡、蓮花", tone: "先問再幫", color: "lavender" },
   { id: 96, category: "善行", phrase: "讓好事繼續發生", context: "把收到的善意再傳給下一個人。", action: "小沙彌點亮一串小燈，光線向前延伸。", emotion: "明亮鼓舞", view: "微仰角全身", effect: "串聯小燈、光線", tone: "傳遞善意", color: "vermilion" },
+  { id: 97, category: "尊重", phrase: "尊重每個選擇", context: "對方做出不同決定時，先尊重自主而不是急著說服。", action: "退開一步並雙手合十，讓出選擇的空間。", emotion: "成熟平和", view: "三分之二側面全身", effect: "兩條小路、蓮花", tone: "尊重自主", color: "ink" },
+  { id: 98, category: "尊重", phrase: "謝謝你的界線", context: "對方表達需要獨處、休息或拒絕時，回應其界線。", action: "小沙彌在地面畫出柔和界線，微笑點頭。", emotion: "理解體貼", view: "正面半身", effect: "柔和界線、蓮花", tone: "接住界線", color: "sage" },
+  { id: 99, category: "尊重", phrase: "我會先問過", context: "涉及他人時間、作品或資料時，先取得同意。", action: "舉起小卷軸與詢問手勢，等待回覆。", emotion: "謹慎友善", view: "側面半身", effect: "問號線、卷軸", tone: "尊重同意", color: "gold" },
+  { id: 100, category: "尊重", phrase: "你的聲音很重要", context: "團體討論中，希望每個人的觀點都有被聽見的機會。", action: "把小木魚放下，側耳望向對話泡泡。", emotion: "專注認真", view: "微俯角半身", effect: "音波線、對話泡泡", tone: "邀請發聲", color: "vermilion" },
+  { id: 101, category: "尊重", phrase: "先讓你說完", context: "對話中不插話，給對方完整表達的時間。", action: "小沙彌用手掌做出請繼續的手勢。", emotion: "耐心專注", view: "正面半身", effect: "順流線、對話泡泡", tone: "完整傾聽", color: "lavender" },
+  { id: 102, category: "尊重", phrase: "不拿別人比較", context: "提醒自己尊重每個人的背景、速度與路線。", action: "放下兩把不同長度的尺，微笑看向前方。", emotion: "釋然清明", view: "俯角全身", effect: "尺、各自腳印", tone: "停止比較", color: "peach" },
+  { id: 103, category: "尊重", phrase: "謝謝你說清楚", context: "對方說明感受、需求或限制時，回應其坦白。", action: "雙手接住一張小紙條，認真點頭。", emotion: "開放感謝", view: "三分之二側面半身", effect: "紙條、光點", tone: "鼓勵表達", color: "gold" },
+  { id: 104, category: "尊重", phrase: "我會注意分寸", context: "想開玩笑或給建議前，先確認是否適合。", action: "小沙彌收起小木槌，做出輕放手勢。", emotion: "謙慎可愛", view: "正面半身", effect: "小木槌、停頓線", tone: "有界線的善意", color: "ink" },
+  { id: 105, category: "尊重", phrase: "不同也很好", context: "看見差異時，不把不一樣視為錯誤。", action: "小沙彌身旁綻放兩種不同形狀的花。", emotion: "欣賞自在", view: "微仰角全身", effect: "雙色花朵、光線", tone: "欣賞差異", color: "lavender" },
+  { id: 106, category: "尊重", phrase: "請給我一點空間", context: "需要安靜整理情緒或專心完成事情時。", action: "小沙彌坐在蒲團上，周圍留出清楚空白。", emotion: "平靜堅定", view: "微俯角全身", effect: "蒲團、留白圓線", tone: "溫和表達需求", color: "sage" },
+  { id: 107, category: "尊重", phrase: "我先尊重你的步調", context: "對方需要較慢速度或不同方法時，願意配合。", action: "小沙彌放慢腳步，和小雲朵並行。", emotion: "耐心支持", view: "側面全身", effect: "腳步線、雲朵", tone: "配合步調", color: "peach" },
+  { id: 108, category: "尊重", phrase: "謝謝你提醒我", context: "收到界線或尊重相關的提醒，願意修正自己的行動。", action: "小沙彌拿著筆記本合十致意。", emotion: "謙虛認真", view: "正面半身", effect: "筆記本、勾線", tone: "願意修正", color: "vermilion" },
+  { id: 109, category: "和解", phrase: "我們先冷靜一下", context: "爭執升溫時，先停下來避免說出傷人的話。", action: "放下小木魚並做出暫停手勢。", emotion: "安定克制", view: "正面半身", effect: "停止線、雲朵", tone: "先降溫", color: "ink" },
+  { id: 110, category: "和解", phrase: "我願意聽你說", context: "衝突後重新打開對話，不急著防衛。", action: "小沙彌坐好並把耳朵朝向對話泡泡。", emotion: "真誠開放", view: "側面半身", effect: "音波線、蓮花", tone: "重新聆聽", color: "lavender" },
+  { id: 111, category: "和解", phrase: "我們都辛苦了", context: "雙方都承受壓力時，先承認彼此的不容易。", action: "小沙彌左右各遞一杯茶。", emotion: "溫暖理解", view: "正面全身", effect: "兩杯茶、熱氣", tone: "看見彼此", color: "gold" },
+  { id: 112, category: "和解", phrase: "我想把話說清楚", context: "誤會存在時，願意用清楚而不攻擊的方式說明。", action: "小沙彌攤開小卷軸，手指向清楚的線條。", emotion: "認真平和", view: "三分之二側面半身", effect: "卷軸、整理線", tone: "釐清誤會", color: "vermilion" },
+  { id: 113, category: "和解", phrase: "對不起，我剛剛太急了", context: "發現自己的語氣傷人或反應過快時。", action: "真誠鞠躬，手邊放著一朵蓮花。", emotion: "誠懇自省", view: "正面半身", effect: "蓮花、緩和弧線", tone: "承擔語氣", color: "peach" },
+  { id: 114, category: "和解", phrase: "謝謝你願意回來談", context: "對方願意重新溝通，想肯定這份勇氣。", action: "小沙彌提著小燈迎向前方。", emotion: "欣慰溫暖", view: "微仰角全身", effect: "小燈、迎接線", tone: "珍惜回來", color: "gold" },
+  { id: 115, category: "和解", phrase: "我們找共同點", context: "意見不同時，先找彼此都在乎的部分。", action: "小沙彌在兩個圓圈交會處放下蓮花。", emotion: "專注合作", view: "俯角半身", effect: "交會圓線、蓮花", tone: "找共同點", color: "sage" },
+  { id: 116, category: "和解", phrase: "我不想再傷害你", context: "希望停止互相攻擊，把界線說清楚。", action: "小沙彌收起尖角紙片，換成柔和蓮花。", emotion: "堅定溫柔", view: "正面半身", effect: "紙片、蓮花", tone: "停止傷害", color: "ink" },
+  { id: 117, category: "和解", phrase: "先從一句好話開始", context: "氣氛僵住時，讓對話重新有一個溫和起點。", action: "小沙彌端出茶並雙手合十。", emotion: "友善期待", view: "正面全身", effect: "茶杯、晨光", tone: "重新開場", color: "vermilion" },
+  { id: 118, category: "和解", phrase: "我理解你為什麼難過", context: "不一定同意，但願意先承認對方的感受。", action: "小沙彌把蓮花放在對話泡泡旁。", emotion: "同理安定", view: "三分之二側面半身", effect: "蓮花、圓光", tone: "先承接感受", color: "peach" },
+  { id: 119, category: "和解", phrase: "我們可以重新約定", context: "舊方法不適合時，一起建立更好的相處方式。", action: "小沙彌在卷軸上畫出新的柔和線條。", emotion: "務實希望", view: "俯角半身", effect: "卷軸、連接線", tone: "重新約定", color: "lavender" },
+  { id: 120, category: "和解", phrase: "願我們都放下一點", context: "和解不是遺忘，而是讓彼此不再被衝突綁住。", action: "小沙彌放下手中的石頭，讓蓮花浮起。", emotion: "釋然平靜", view: "微仰角全身", effect: "石頭、蓮花、水波線", tone: "慢慢放下", color: "sage" },
+  { id: 121, category: "分享", phrase: "一起分享吧", context: "有好消息、知識或資源時，邀請大家一起參與。", action: "小沙彌打開小布袋，裡面放著蓮花與小卷軸。", emotion: "開心大方", view: "正面全身", effect: "小布袋、光點", tone: "共享邀請", color: "vermilion" },
+  { id: 122, category: "分享", phrase: "這個給你", context: "想把一份小禮物、點心或祝福送給對方。", action: "雙手遞出小茶杯與蓮花。", emotion: "溫柔慷慨", view: "三分之二側面半身", effect: "茶杯、蓮花", tone: "直接分享", color: "gold" },
+  { id: 123, category: "分享", phrase: "我整理給你", context: "把資訊、筆記或經驗整理成對方容易使用的形式。", action: "小沙彌抱著整齊的小卷軸。", emotion: "可靠認真", view: "正面半身", effect: "卷軸、整理線", tone: "整理再分享", color: "ink" },
+  { id: 124, category: "分享", phrase: "有需要就拿", context: "提供資源時，不讓對方感到欠人情。", action: "小沙彌把一籃小蓮花放在桌面前方。", emotion: "自在大方", view: "俯角全身", effect: "籃子、蓮花", tone: "降低負擔", color: "sage" },
+  { id: 125, category: "分享", phrase: "歡迎加入", context: "新朋友、新同事或新成員加入團體時。", action: "小沙彌揮手迎接，身旁有一盞小燈。", emotion: "親切熱情", view: "正面全身", effect: "小燈、迎接線", tone: "友善邀請", color: "peach" },
+  { id: 126, category: "分享", phrase: "把好消息傳下去", context: "收到值得鼓勵的善意或消息，想讓更多人知道。", action: "小沙彌把小燈交給下一盞燈。", emotion: "明亮鼓舞", view: "側面全身", effect: "串聯小燈、光線", tone: "傳遞好事", color: "vermilion" },
+  { id: 127, category: "分享", phrase: "謝謝你願意分享", context: "收到對方的故事、方法、知識或心意。", action: "小沙彌雙手接住小卷軸並鞠躬。", emotion: "尊重感謝", view: "正面半身", effect: "卷軸、光點", tone: "珍惜分享", color: "lavender" },
+  { id: 128, category: "分享", phrase: "我們一起用", context: "共享工具、空間或資源時，提醒彼此照顧使用方式。", action: "小沙彌與畫面前方一起托住一盞燈。", emotion: "合作踏實", view: "微仰角全身", effect: "小燈、合力線", tone: "共同維護", color: "gold" },
+  { id: 129, category: "分享", phrase: "讓我也出一份力", context: "團隊共同完成事情時，主動貢獻時間或專長。", action: "小沙彌捲起袖子，抱著小箱子加入。", emotion: "積極熱心", view: "三分之二側面全身", effect: "小箱子、加油線", tone: "主動貢獻", color: "sage" },
+  { id: 130, category: "分享", phrase: "這份溫暖分你一半", context: "想分享鼓勵、陪伴或一點好心情。", action: "小沙彌把一朵蓮花分成兩束光。", emotion: "溫暖可愛", view: "正面半身", effect: "雙束光、蓮花", tone: "分享心情", color: "peach" },
+  { id: 131, category: "分享", phrase: "好方法值得被看見", context: "有人提供有用的方法或創意時，給予公開肯定。", action: "小沙彌舉起小卷軸，身旁有星星線。", emotion: "欣賞鼓勵", view: "微仰角半身", effect: "卷軸、星星", tone: "放大好方法", color: "vermilion" },
+  { id: 132, category: "分享", phrase: "一起把善意延續", context: "把收到的幫助轉成下一個可以實踐的行動。", action: "小沙彌沿著小燈排列出一條路。", emotion: "明亮堅定", view: "俯角全身", effect: "小燈、道路線", tone: "善意接力", color: "lavender" },
+  { id: 133, category: "祝福", phrase: "願你平安", context: "關心對方今天的狀態，送上簡單而真誠的祝福。", action: "雙手合十，胸前有一圈柔和光暈。", emotion: "安心溫柔", view: "正面半身", effect: "平安光圈、蓮花", tone: "簡單祝福", color: "gold" },
+  { id: 134, category: "祝福", phrase: "願你順心", context: "祝福對方接下來的事情順利、心情穩定。", action: "小沙彌把一朵蓮花放在順流線上。", emotion: "明亮溫暖", view: "三分之二側面全身", effect: "順流線、蓮花", tone: "溫柔祝願", color: "peach" },
+  { id: 135, category: "祝福", phrase: "願你被好好對待", context: "關心正在努力或承受壓力的人。", action: "小沙彌把小毯子與蓮花遞向前方。", emotion: "慈柔關懷", view: "正面半身", effect: "小毯子、圓光", tone: "守護祝福", color: "vermilion" },
+  { id: 136, category: "祝福", phrase: "願你今天有光", context: "在低潮或陰鬱時，送上一點不過度承諾的希望。", action: "小沙彌提著小燈走在晨光裡。", emotion: "安靜希望", view: "微仰角全身", effect: "小燈、晨光線", tone: "留一盞光", color: "gold" },
+  { id: 137, category: "祝福", phrase: "願你吃飽睡好", context: "關心日常基本需要，適合對疲憊的朋友說。", action: "小沙彌端茶並抱著小被子。", emotion: "可愛體貼", view: "正面全身", effect: "茶杯、月亮、被子", tone: "照顧日常", color: "lavender" },
+  { id: 138, category: "祝福", phrase: "願你有勇氣", context: "對方要面對重要決定或新的挑戰時。", action: "小沙彌握著小旗子，穩穩向前踏步。", emotion: "堅定鼓舞", view: "微仰角全身", effect: "小旗子、腳步線", tone: "支持前行", color: "vermilion" },
+  { id: 139, category: "祝福", phrase: "願你不必獨自承擔", context: "想提醒對方可以求助，也有人願意陪伴。", action: "小沙彌伸出手，另一手托著小燈。", emotion: "可靠溫暖", view: "正面半身", effect: "牽引線、小燈", tone: "邀請陪伴", color: "peach" },
+  { id: 140, category: "祝福", phrase: "願你保有柔軟", context: "面對忙碌與不順時，提醒不要失去善意。", action: "小沙彌護著胸前的小蓮花。", emotion: "溫柔堅定", view: "三分之二側面半身", effect: "蓮花、柔和線", tone: "守住柔軟", color: "sage" },
+  { id: 141, category: "祝福", phrase: "願你一路有伴", context: "祝福對方踏上新旅程、轉換工作或開始新生活。", action: "小沙彌背著小布袋在小路上揮手。", emotion: "期待親切", view: "側面全身", effect: "道路、小旗子", tone: "同行祝福", color: "lavender" },
+  { id: 142, category: "祝福", phrase: "願好事發生", context: "對方需要鼓勵，或想為一天留一個明亮的結尾。", action: "小沙彌播下種子，嫩芽旁出現小光點。", emotion: "開心希望", view: "俯角全身", effect: "種子、嫩芽、光點", tone: "保留期待", color: "gold" },
+  { id: 143, category: "祝福", phrase: "願你安心做自己", context: "提醒對方不用迎合所有人的期待。", action: "小沙彌在蓮花旁自在坐下，微笑合十。", emotion: "自在安定", view: "正面全身", effect: "蓮花、圓形光線", tone: "支持真實", color: "ink" },
+  { id: 144, category: "祝福", phrase: "明天也會有新的風景", context: "在告別或低潮時，送上溫柔但不保證結果的盼望。", action: "小沙彌回頭看向雲後的晨光。", emotion: "溫暖期待", view: "微仰角側面全身", effect: "雲朵、遠方光線", tone: "留下希望", color: "peach" },
 ];
 
 const categoryIcons: Record<string, typeof HeartHandshake> = {
@@ -158,6 +214,10 @@ const categoryIcons: Record<string, typeof HeartHandshake> = {
   自省: BookOpenText,
   和善: Quote,
   善行: Leaf,
+  尊重: ShieldCheck,
+  和解: Handshake,
+  分享: Gift,
+  祝福: Compass,
 };
 
 export default function Home() {
@@ -210,7 +270,7 @@ export default function Home() {
 
       <div className="page-grid" id="top">
         <aside className={`index-rail ${mobileNavOpen ? "is-open" : ""}`}>
-          <div className="rail-heading"><span className="eyebrow">語料索引</span><span className="rail-count">08 章</span></div>
+          <div className="rail-heading"><span className="eyebrow">語料索引</span><span className="rail-count">12 章</span></div>
           <nav aria-label="向善用語分類">
             {categories.map((category, index) => {
               const Icon = category.name === "全部語料" ? BookOpenText : categoryIcons[category.name];
@@ -241,7 +301,7 @@ export default function Home() {
               <div className="hero-actions">
                 <a className="text-link" href="#phrases">開始翻閱 <ArrowUpRight size={16} /></a>
                 <span className="hero-rule" />
-                <span className="hero-meta">96 句收藏・08 個類別</span>
+                <span className="hero-meta">144 句收藏・12 個類別</span>
               </div>
             </div>
             <div className="hero-art-wrap">
