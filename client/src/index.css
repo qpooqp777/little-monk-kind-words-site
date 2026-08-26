@@ -225,7 +225,7 @@ h1 em::after, h2 em::after { content: ""; position: absolute; left: 5%; right: 0
 .phrase-detail p { font-size: 12px; line-height: 1.8; margin: 0; }
 .action-detail { border-left: 1px solid rgba(23,50,77,0.11); padding-left: 22px; }
 .effect-text { color: var(--row-accent, var(--vermillion)); font-size: 10px; }
-.copy-button { align-self: center; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 52px; height: 52px; border: 1px solid #d9cbbb; border-radius: 50%; background: transparent; color: var(--navy); font-family: "DM Mono", monospace; font-size: 9px; transition: color 170ms var(--ease-out), background 170ms var(--ease-out), border-color 170ms var(--ease-out), transform 170ms var(--ease-out); }
+.copy-button { align-self: center; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 68px; height: 52px; border: 1px solid #d9cbbb; border-radius: 50%; background: transparent; color: var(--navy); font-family: "DM Mono", monospace; font-size: 9px; transition: color 170ms var(--ease-out), background 170ms var(--ease-out), border-color 170ms var(--ease-out), transform 170ms var(--ease-out); }
 .copy-button:hover, .copy-button.is-copied { background: var(--vermillion); color: var(--paper); border-color: var(--vermillion); transform: rotate(-5deg); }
 .accent-vermilion { --row-accent: #c95a3d; }
 .accent-lavender { --row-accent: #8d7799; }
@@ -301,7 +301,7 @@ h1 em::after, h2 em::after { content: ""; position: absolute; left: 5%; right: 0
   .phrase-detail { grid-column: 2 / 4; padding: 0 0 16px; }
   .phrase-detail p { font-size: 12px; }
   .action-detail { padding: 13px 0 18px; }
-  .copy-button { grid-column: 3; grid-row: 1; margin-top: 21px; width: 48px; height: 48px; }
+  .copy-button { grid-column: 3; grid-row: 1; margin-top: 21px; width: 64px; height: 48px; font-size: 8px; }
   .closing-section { grid-template-columns: 0.7fr 1.3fr; gap: 17px; padding: 45px 0 62px; }
   .closing-art img { width: 100%; }
   .closing-copy h2 { font-size: clamp(27px, 8vw, 42px); }
